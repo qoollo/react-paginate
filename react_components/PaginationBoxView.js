@@ -8,6 +8,7 @@ import createFragment from 'react-addons-create-fragment';
 import PageView from './PageView';
 import BreakView from './BreakView';
 
+import { Menu } from 'semantic-ui-react';
 
 export default class PaginationBoxView extends Component {
   static propTypes = {
@@ -202,29 +203,29 @@ export default class PaginationBoxView extends Component {
                                    {[disabled]: this.state.selected === this.props.pageCount - 1});
 
     return (
-      <ul className={this.props.containerClassName}>
-        <li className={previousClasses}>
-          <a onClick={this.handlePreviousPage}
-             className={this.props.previousLinkClassName}
-             href={this.hrefBuilder(this.state.selected - 1)}
-             tabIndex="0"
-             onKeyPress={this.handlePreviousPage}>
-            {this.props.previousLabel}
-          </a>
-        </li>
+      <Menu pagination className={this.props.containerClassName}>
+        <Menu.Item
+          className={previousClasses}
+          href={this.hrefBuilder(this.state.selected - 1)}
+          tabIndex="0"
+          onKeyPress={this.handlePreviousPage}
+          onClick={this.handlePreviousPage}
+        >
+          {this.props.previousLabel}
+        </Menu.Item>
 
         {createFragment(this.pagination())}
 
-        <li className={nextClasses}>
-          <a onClick={this.handleNextPage}
-             className={this.props.nextLinkClassName}
-             href={this.hrefBuilder(this.state.selected + 1)}
-             tabIndex="0"
-             onKeyPress={this.handleNextPage}>
-            {this.props.nextLabel}
-          </a>
-        </li>
-      </ul>
+        <Menu.Item
+          className={nextClasses}
+          onClick={this.handleNextPage}
+          href={this.hrefBuilder(this.state.selected + 1)}
+          tabIndex="0"
+          onKeyPress={this.handleNextPage}
+        >
+          {this.props.nextLabel}
+        </Menu.Item>
+      </Menu>
     );
   }
 };

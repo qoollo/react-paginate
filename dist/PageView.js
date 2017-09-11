@@ -8,6 +8,8 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _semanticUiReact = require('semantic-ui-react');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var PageView = function PageView(props) {
@@ -29,19 +31,17 @@ var PageView = function PageView(props) {
   }
 
   return _react2.default.createElement(
-    'li',
-    { className: cssClassName },
-    _react2.default.createElement(
-      'a',
-      { onClick: onClick,
-        className: linkClassName,
-        href: href,
-        tabIndex: '0',
-        'aria-label': ariaLabel,
-        'aria-current': ariaCurrent,
-        onKeyPress: onClick },
-      props.page
-    )
+    _semanticUiReact.Menu.Item,
+    {
+      className: cssClassName,
+      onClick: onClick,
+      href: href,
+      tabIndex: '0',
+      'aria-label': ariaLabel,
+      'aria-current': ariaCurrent,
+      onKeyPress: onClick
+    },
+    props.page
   );
 };
 

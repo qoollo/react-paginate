@@ -30,6 +30,8 @@ var _BreakView = require('./BreakView');
 
 var _BreakView2 = _interopRequireDefault(_BreakView);
 
+var _semanticUiReact = require('semantic-ui-react');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -195,34 +197,30 @@ var PaginationBoxView = function (_Component) {
       var nextClasses = (0, _classnames2.default)(this.props.nextClassName, _defineProperty({}, disabled, this.state.selected === this.props.pageCount - 1));
 
       return _react2.default.createElement(
-        'ul',
-        { className: this.props.containerClassName },
+        _semanticUiReact.Menu,
+        { pagination: true, className: this.props.containerClassName },
         _react2.default.createElement(
-          'li',
-          { className: previousClasses },
-          _react2.default.createElement(
-            'a',
-            { onClick: this.handlePreviousPage,
-              className: this.props.previousLinkClassName,
-              href: this.hrefBuilder(this.state.selected - 1),
-              tabIndex: '0',
-              onKeyPress: this.handlePreviousPage },
-            this.props.previousLabel
-          )
+          _semanticUiReact.Menu.Item,
+          {
+            className: previousClasses,
+            href: this.hrefBuilder(this.state.selected - 1),
+            tabIndex: '0',
+            onKeyPress: this.handlePreviousPage,
+            onClick: this.handlePreviousPage
+          },
+          this.props.previousLabel
         ),
         (0, _reactAddonsCreateFragment2.default)(this.pagination()),
         _react2.default.createElement(
-          'li',
-          { className: nextClasses },
-          _react2.default.createElement(
-            'a',
-            { onClick: this.handleNextPage,
-              className: this.props.nextLinkClassName,
-              href: this.hrefBuilder(this.state.selected + 1),
-              tabIndex: '0',
-              onKeyPress: this.handleNextPage },
-            this.props.nextLabel
-          )
+          _semanticUiReact.Menu.Item,
+          {
+            className: nextClasses,
+            onClick: this.handleNextPage,
+            href: this.hrefBuilder(this.state.selected + 1),
+            tabIndex: '0',
+            onKeyPress: this.handleNextPage
+          },
+          this.props.nextLabel
         )
       );
     }

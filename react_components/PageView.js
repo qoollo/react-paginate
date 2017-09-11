@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import { Menu } from 'semantic-ui-react';
 
 const PageView = (props) => {
   let cssClassName = props.pageClassName;
@@ -22,17 +23,17 @@ const PageView = (props) => {
   }
 
   return (
-      <li className={cssClassName}>
-          <a onClick={onClick}
-             className={linkClassName}
-             href={href}
-             tabIndex="0"
-             aria-label={ariaLabel}
-             aria-current={ariaCurrent}
-             onKeyPress={onClick}>
-            {props.page}
-          </a>
-      </li>
+      <Menu.Item
+        className={cssClassName}
+        onClick={onClick}
+        href={href}
+        tabIndex="0"
+        aria-label={ariaLabel}
+        aria-current={ariaCurrent}
+        onKeyPress={onClick}
+      >
+        {props.page}
+      </Menu.Item>
   )
 }
 
